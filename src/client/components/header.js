@@ -18,44 +18,38 @@ import LogoImg from "../../../public/static/logo.png"
 /*************************************************************************/
 const LogoImgStyle = styled.img`
   height: auto;
-  width: 25%;
+  width: 200px;
   filter: drop-shadow(5px 5px 5px #222);
-  padding: 15px;
-`;
-
-const HeaderBase = styled.div`
-  grid-area: hd;
-  display: flex;
-  background: #e0dfda; 
+  padding: 5px;
 `;
 
 const Styled_Header = styled.h2`
-  font-size: 1.5em;
+  font-size: 1.9em;
   text-align: left;
   font-family: "Roboto";
   font-style: italic;
-  color: ${fontColor};
-  position:relative;
+  color: rgba(235, 235, 235,1);
+  white-space: nowrap;
+  margin: 0;
+  letter-spacing: 2.5x;
 `;
 
 // HEADER LEFT
 /*************************************************************************/
-const fontColor = "#00001a";
 
 const HeaderLeftBase = styled.div`
-  flex-grow: 2;
-  flex-direction: row;\
+  display: inline-block;
+  width: 200px;
+  margin: 0;
 `;
 
 const HeaderLeft = () => {
   return (
-    <HeaderLeftBase>
-      <span>
-      <LogoImgStyle src={LogoImg}></LogoImgStyle>
-      <Styled_Header>A Technology Consulting Firm for the Future</Styled_Header>
-      </span>
-    
-    </HeaderLeftBase>
+    <Link to={`/`} style={{ textDecoration: 'none' }}>
+      <HeaderLeftBase>
+        <LogoImgStyle src={LogoImg}></LogoImgStyle> 
+      </HeaderLeftBase>
+    </Link>
   );
 };
 
@@ -64,13 +58,14 @@ const HeaderLeft = () => {
 
 
 const HeaderMiddleBase = styled.div`
-  flex-grow: 1;
-  flex-direction: row;
+  padding-left: 35px;
+  display: inline-block;
+  margin: auto 0;
 `;
 const HeaderMiddle = () => {
   return (
     <HeaderMiddleBase>
-      
+      <Styled_Header>A Technology Consulting Firm for the Future</Styled_Header>   
     </HeaderMiddleBase>
   );
 };
@@ -80,7 +75,16 @@ const HeaderMiddle = () => {
 /*******************************************************************/
 
 
-
+const HeaderBase = styled.div`
+  display:flex;
+  position: fixed;
+  width: 100%;
+  height: 75px;
+  top:0;
+  background: #28474b;
+  border: 1px solid black;
+  border-width: 0 0 1px 0;
+`;
 export const Header = () => (
   <HeaderBase>
     <HeaderLeft />
