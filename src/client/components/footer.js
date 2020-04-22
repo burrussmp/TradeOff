@@ -1,4 +1,4 @@
-/* Copyright G. Hemingway, 2019 - All rights reserved */
+/* Copyright M. Burruss 2020 - All rights reserved */
 "use strict";
 
 import React, { Fragment } from "react";

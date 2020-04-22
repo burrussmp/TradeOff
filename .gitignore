@@ -7,7 +7,6 @@
 .env
 .babelrc
 .package-lock.json
-
 # testing
 /coverage
 

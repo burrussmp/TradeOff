@@ -1,8 +1,8 @@
-/* Copyright G. Hemingway, 2019 - All rights reserved */
+/* Copyright M. Burruss 2020 - All rights reserved */
+
 "use strict";
 
 import React, { Fragment } from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
