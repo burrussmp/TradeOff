@@ -43,7 +43,7 @@ const setupServer = async () => {
   // Finish with the body parser
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
-
+  
 
   // // Import our Data Models
   // app.models = {
@@ -68,6 +68,9 @@ const setupServer = async () => {
   });
 
   // // Run the server itself
+  // import the routes
+  require("./api")(app);
+  
   let server;
   if (env === "production") {
     const options = {

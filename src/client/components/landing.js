@@ -1,7 +1,7 @@
 /* Copyright G. Hemingway, 2019 - All rights reserved */
 "use strict";
 
-import React from "react";
+import React,{useEffect} from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -58,12 +58,16 @@ const Info = ({link_path,img,description}) =>  (
     </Link>
 )
 
+export const Landing = () => {
+  useEffect(()=>{
+    document.body.style.backgroundColor = '#00001a';
+  });
 
-export const Landing = () => (
-  <LandingBase>
-    <Info link_path={'/develop/'} img = {Develop_Img} description = {DevelopDescription}></Info>
-    <Info link_path={'/evolve/'} img = {Evolve_Img} description = {EvolveDescription}></Info>
-    <Info link_path={'/discover/'} img = {Discover_Img} description = {DiscoverDescription}></Info>
-    
-  </LandingBase>
-);
+  return (
+    <LandingBase>
+      <Info link_path={'/develop/'} img = {Develop_Img} description = {DevelopDescription}></Info>
+      <Info link_path={'/evolve/'} img = {Evolve_Img} description = {EvolveDescription}></Info>
+      <Info link_path={'/discover/'} img = {Discover_Img} description = {DiscoverDescription}></Info>
+    </LandingBase>
+  )
+};

@@ -46,7 +46,5 @@ class MyApp extends Component {
             </BrowserRouter>
         )
     }
-
 }
-
 render(<MyApp />, document.getElementById("mainDiv"));
