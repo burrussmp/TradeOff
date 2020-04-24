@@ -4,8 +4,6 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import { Landing } from "./components/landing";
-import { Header } from "./components/header";
-import { Footer } from "./components/footer";
 import { Develop } from "./components/develop";
 
 import styled from "styled-components";
@@ -35,14 +33,11 @@ class MyApp extends Component {
 
     render() {
         return (
-            <BrowserRouter>
-              
+            <BrowserRouter>=
               <GridBase>
                 <Route exact path="/" component={Landing} />
                 <Route path ='/develop' component = {Develop} />
               </GridBase>
-              <Header/>
-              <Footer/>
             </BrowserRouter>
         )
     }

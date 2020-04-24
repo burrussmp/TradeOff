@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 // LOAD ANY ASSETS
 /*************************************************************************/
-import LogoImg from "../../../public/static/logo.png"
+import LogoImg from "../../../../public/static/logo.png"
 
 
 

@@ -4,10 +4,13 @@
 import React,{useEffect} from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
+import { Header } from "./reusable/header";
+import { Footer } from "./reusable/footer";
 import Develop_Img from "../../../public/static/develop_logo.png"
 import Discover_Img from "../../../public/static/discover_logo.png"
 import Evolve_Img from "../../../public/static/evolve_logo.png"
+
+
 /*************************************************************************/
 
 const LandingBase = styled.div`
@@ -64,10 +67,14 @@ export const Landing = () => {
   });
 
   return (
-    <LandingBase>
-      <Info link_path={'/develop/'} img = {Develop_Img} description = {DevelopDescription}></Info>
-      <Info link_path={'/evolve/'} img = {Evolve_Img} description = {EvolveDescription}></Info>
-      <Info link_path={'/discover/'} img = {Discover_Img} description = {DiscoverDescription}></Info>
-    </LandingBase>
+    <>
+      <LandingBase>
+        <Info link_path={'/develop/'} img = {Develop_Img} description = {DevelopDescription}></Info>
+        <Info link_path={'/evolve/'} img = {Evolve_Img} description = {EvolveDescription}></Info>
+        <Info link_path={'/discover/'} img = {Discover_Img} description = {DiscoverDescription}></Info>
+      </LandingBase>
+      <Header/>
+      <Footer/>
+    </>
   )
 };

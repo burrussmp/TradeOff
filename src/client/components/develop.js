@@ -20,7 +20,7 @@ import {JavascriptCell} from "./developer_subcomponents/JavascriptCell"
 import {DeveloperContentHeader} from "./developer_subcomponents/DeveloperContentHeader"
 import $ from "jquery";
 import {MainTheme as Theme} from "./developer_subcomponents/DeveloperTheme"
-
+import { Header } from "./reusable/header";
 /*******************************************************
   HELPER FUNCTIONS
 *******************************************************/
@@ -61,8 +61,8 @@ const DeveloperContent = styled.div`
   padding: 0px;
   overflow-x: hidden; 
   overflow-x: auto;
-  max-height: 85vh;
-  min-height: 85vh;
+  max-height: 80vh;
+  min-height: 80vh;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -152,7 +152,6 @@ export const Develop = () => {
   // make any necessary adjustments to default page
   useEffect(()=>{
     document.body.style.backgroundColor = `${Theme.bodyBackgroundColor}`;
-    $( "#footer" ).remove();
   });
 
   const createCellList = (cell_list) => {
@@ -171,11 +170,14 @@ export const Develop = () => {
   })
 
   return (
-    <DeveloperEnvironment>
-        <DeveloperContentHeader cellStore={cellStore}></DeveloperContentHeader>
-        <DeveloperContent id ="DeveloperContent">
-          {cellList}
-        </DeveloperContent>
-    </DeveloperEnvironment>
+    <>
+      <DeveloperEnvironment>
+          <DeveloperContentHeader cellStore={cellStore}></DeveloperContentHeader>
+          <DeveloperContent id ="DeveloperContent">
+            {cellList}
+          </DeveloperContent>
+      </DeveloperEnvironment>
+      <Header/>
+    </>
   )
 }
