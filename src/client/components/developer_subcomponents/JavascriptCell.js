@@ -16,7 +16,7 @@ import "../../../../ace-builds/webpack-resolver";
 import "../../../../ace-builds/src-noconflict/mode-javascript";
 import "../../../../ace-builds/src-noconflict/theme-clouds"
 import {MainTheme as Theme} from "./DeveloperTheme";
-
+import $ from "jquery";
 /*******************************************************
   CELL-EDITOR SUB-COMPONENT
     Each javascript cell has a few settings that can be manipulated
@@ -128,6 +128,42 @@ const CustomButtonDeleteOutput = styled.button`
   }
 `;
 
+const ExecuteButton = styled.button`
+  margin-bottom: 2px;
+  background: ${Theme.backgroundCodingField};
+  border: 1px solid ${Theme.borderColor};
+  float:left;
+  &:hover {
+    background: ${Theme.buttonHoverColor};
+  }
+`;
+// A useful function
+const StateReducerCreator = (UpdateState,Reducer) => {
+  return (state,action)=>{
+    let nextState = Reducer(state,action);
+    UpdateState(nextState);
+  }
+};
+
+const outputReducer = (state=``,action)=>{
+  let nextState = state;
+  switch(action.type){
+    case 'CLEAR':
+      nextState =  ``;
+      break;
+    case 'SET':
+      nextState = action.output;
+      $('#DeveloperContent').scrollTop($('#DeveloperContent')[0].scrollHeight);
+      break;
+    case 'APPEND':
+      nextState = state + action.output;
+      $('#DeveloperContent').scrollTop($('#DeveloperContent')[0].scrollHeight);
+      break;
+    default:
+      break;
+  };
+  return nextState;
+}
 /*******************************************************
   COMPONENT DEFINITION
   The main javascript cell component definition
@@ -138,18 +174,25 @@ export const JavascriptCell = ({id,cellStore}) => {
 
     const [editor,setEditor] = useState(null);
     const [cellOutput,setCellOutput] = useState('');
-  
+    const OutputStateReducer = StateReducerCreator(setCellOutput,outputReducer);
+
+    const RunCode = () => {
+      let state = `Simple Echoing command when Shift+Enter is pressed\n\n${editor.getValue()}`;
+      let action = {'type':'SET','output':state};
+      OutputStateReducer(state,action); 
+    }
     const handleKeyDown = (event) =>{
       if (event.key === 'Enter' && event.shiftKey){
         event.preventDefault();
-        setCellOutput(`Simple Echoing command when Shift+Enter is pressed\n\n${editor.getValue()}`)
-        $('#DeveloperContent').scrollTop($('#DeveloperContent')[0].scrollHeight);
+        RunCode();
       }
     }
   
     const clearOutput = (event) => {
       event.preventDefault();
-      setCellOutput('');
+      let state = ``;
+      let action = {'type':'CLEAR'};
+      OutputStateReducer(state,action); 
     };
     
     useEffect(()=>{
@@ -167,6 +210,7 @@ export const JavascriptCell = ({id,cellStore}) => {
     return (
       <CellContainerMain>
         <CellContainerInside>
+        <ExecuteButton onClick={RunCode}>Run</ExecuteButton>
         <CellEditorSettings cellStore = {cellStore} id={id}></CellEditorSettings>
         <EditorField onKeyDown={handleKeyDown} id={`editor${id}`}></EditorField>
           { cellOutput != '' ?

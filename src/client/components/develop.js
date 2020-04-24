@@ -15,13 +15,14 @@
 *******************************************************/
 import React,{useState,useEffect} from "react";
 import $ from "jquery";
-import {createStore} from "redux";
-import {styled} from "styled-components";
+import styled from "styled-components";
 
+import {createStore} from "redux";
 import {JavascriptCell} from "./developer_subcomponents/JavascriptCell"
 import {DeveloperContentHeader} from "./developer_subcomponents/DeveloperContentHeader"
 import {MainTheme as Theme} from "./developer_subcomponents/DeveloperTheme"
 import { Header } from "./reusable/header";
+
 
 /*******************************************************
   STYLED COMPONENTS
