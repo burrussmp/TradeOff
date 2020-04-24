@@ -14,34 +14,14 @@
   IMPORT STATEMENTS
 *******************************************************/
 import React,{useState,useEffect} from "react";
+import $ from "jquery";
 import {createStore} from "redux";
-import styled from "styled-components";
+import {styled} from "styled-components";
+
 import {JavascriptCell} from "./developer_subcomponents/JavascriptCell"
 import {DeveloperContentHeader} from "./developer_subcomponents/DeveloperContentHeader"
-import $ from "jquery";
 import {MainTheme as Theme} from "./developer_subcomponents/DeveloperTheme"
 import { Header } from "./reusable/header";
-/*******************************************************
-  HELPER FUNCTIONS
-*******************************************************/
-
-/**
- * Submits code in editor cell to the server
- * @param {editor} Ace editor which contains code to execute on the server
-**/
-const submit_code = (editor) => {
-  fetch("/v1/develop", {
-    method: "POST",
-    body: JSON.stringify({"code": editor.getValue()}),
-    headers: {
-      "content-type": 'application/json' 
-    }
-  }).then(res=>{
-    if (res.ok){
-      console.log('Successfully sent data');
-    } else res.json().then(error => console.log(error));
-  })
-}
 
 /*******************************************************
   STYLED COMPONENTS
