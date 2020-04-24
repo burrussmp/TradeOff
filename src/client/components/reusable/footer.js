@@ -1,13 +1,19 @@
 /* Copyright M. Burruss 2020 - All rights reserved */
 "use strict";
 
+/*******************************************************
+  DESCRIPTION
+    A basic footer.
+*******************************************************/
+
+/*******************************************************
+  IMPORT STATEMENTS
+*******************************************************/
 import React from "react";
 import styled from "styled-components";
 
-
 /*************************************************************************/
-
-// HEADER LEFT
+// STYLE
 /*************************************************************************/
 const fontColor = "#00001a";
 
@@ -28,14 +34,6 @@ const CopyRight = styled.h2`
   margin: 0 auto;
 `;
 
-const FooterInside = () => {
-  return (
-    <FooterLeftBase>
-        <CopyRight>Copyright &copy; 2020 TradeOff. All rights reserved. Terms of Use | Privacy Policy</CopyRight>
-    </FooterLeftBase>
-  );
-};
-
 const FooterBase = styled.div`
   position: fixed;
   bottom: 0;
@@ -45,8 +43,14 @@ const FooterBase = styled.div`
   border: 1px solid white;
   border-width: 0 0 1px 0;
 `;
+
+/*************************************************************************/
+// FOOTER COMPONENT
+/*************************************************************************/
 export const Footer = () => (
   <FooterBase id="footer">
-    <FooterInside/>
+     <FooterLeftBase>
+        <CopyRight>Copyright &copy; 2020 TradeOff. All rights reserved. Terms of Use | Privacy Policy</CopyRight>
+    </FooterLeftBase>
   </FooterBase>
 );
