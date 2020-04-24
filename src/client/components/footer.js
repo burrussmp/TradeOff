@@ -46,7 +46,7 @@ const FooterBase = styled.div`
   border-width: 0 0 1px 0;
 `;
 export const Footer = () => (
-  <FooterBase>
+  <FooterBase id="footer">
     <FooterInside/>
   </FooterBase>
 );
